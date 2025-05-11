@@ -33,6 +33,7 @@ func GetVehicleData(placa string) (ApiVehicle, error) {
 		return ApiVehicle{}, fmt.Errorf("Api error: %s", resp.Status)
 	}
 
+	// This variable will be used to store the vehicle data retrieved from the API response
 	var vehicle ApiVehicle
 	if err := json.NewDecoder(resp.Body).Decode(&vehicle); err != nil {
 		return ApiVehicle{}, err
