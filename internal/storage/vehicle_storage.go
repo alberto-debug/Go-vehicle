@@ -24,7 +24,7 @@ func ValidateVehicle(cpf, placa string) error {
 	return nil
 }
 
-func saveVehicle(vehicle models.Vehicle) (models.Vehicle, error) {
+func SaveVehicle(vehicle models.Vehicle) (models.Vehicle, error) {
 	vehicle.ID = len(vehicleDB) + 1
 	vehicleDB = append(vehicleDB, vehicle)
 
