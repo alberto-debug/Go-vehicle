@@ -15,7 +15,7 @@ type ApiVehicle struct {
 
 // indicates that the function GetVehicleData takes a placa (a vehicle's license plate) as input, and it returns two things
 func GetVehicleData(placa string) (ApiVehicle, error) {
-	url := fmt.Sprint("https://my.api.mockaroo.com/veiculos?key=55ad1cd0&placa=%s", placa)
+	url := fmt.Sprint("https://my.api.mockaroo.com/veiculos?key=55ad1cd0&placa=", placa)
 
 	// This line sends an HTTP GET request to the constructed URL. The response is
 	// stored in resp, and any error that occurs during the request is stored in err
