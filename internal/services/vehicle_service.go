@@ -15,9 +15,14 @@ func RegisterVehicle(input models.Vehicle) (models.Vehicle, error) {
 	}
 
 	// Call external API
-
 	apiData, err := api.GetVehicleData(input.Placa)
 	if err != nil {
 		return models.Vehicle{}, err
 	}
+
+	// merge the data
+	input.Marca = apiData.Marca
+	input.Modelo = apiData.Modelo
+	input.Chassi = apiData.Chassi
+	input.Licenciado = apiData.Licenciado
 }
