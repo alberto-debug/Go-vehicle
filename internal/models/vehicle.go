@@ -1,6 +1,7 @@
 package models
 
 // Defines your main Vehicle struct that will be used throughout the app
+
 type Vehicle struct {
 	ID           int    `json:"id"`
 	Proprietario string `json:"proprietario"`
