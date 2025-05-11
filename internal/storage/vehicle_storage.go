@@ -17,7 +17,7 @@ func ValidateVehicle(cpf, placa string) error {
 			return errors.New("CPF already exists")
 		}
 		if v.Placa == placa {
-			return errors.New("Placa already exists")
+			return errors.New("placa already exists")
 		}
 	}
 
