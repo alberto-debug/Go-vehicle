@@ -1,6 +1,7 @@
 package api
 
 import (
+	"encoding/json"
 	"fmt"
 	"net/http"
 )
@@ -31,4 +32,11 @@ func GetVehicleData(placa string) (ApiVehicle, error) {
 	if resp.StatusCode != http.StatusOK {
 		return ApiVehicle{}, fmt.Errorf("Api error: %s", resp.Status)
 	}
+
+	var vehicle ApiVehicle
+	if err := json.NewDecoder(resp.Body).Decode(&vehicle); err != nil {
+		return ApiVehicle{}, err
+	}
+
+	return vehicle, nil
 }
