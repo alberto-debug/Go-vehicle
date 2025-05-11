@@ -1,6 +1,7 @@
 package handlers
 
 import (
+	"encoding/json"
 	"net/http"
 
 	"github.com/alberto-debug/Vehicle/internal/models"
@@ -8,6 +9,12 @@ import (
 
 // This is the HTTP handler for the /veiculos route. It uses the service layer to register the vehicle.
 
-func CreateVehicle(w http.ResponseWriter, r *http.ResponseWriter) {
+func CreateVehicle(w http.ResponseWriter, r *http.Request) {
 	var input models.Vehicle
+
+	if err := json.NewDecoder(r.Body).Decode(&input); err != nil {
+
+		http.Error(w, "Invalid JSON", http.StatusBadRequest)
+		return
+	}
 }
