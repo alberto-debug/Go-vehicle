@@ -25,5 +25,10 @@ func GetVehicleData(placa string) (ApiVehicle, error) {
 		return ApiVehicle{}, err
 	}
 
+	// close the request
 	defer resp.Body.Close()
+
+	if resp.StatusCode != http.StatusOK {
+		return ApiVehicle{}, fmt.Errorf("Api error: %s", resp.Status)
+	}
 }
