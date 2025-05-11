@@ -12,10 +12,15 @@ type ApiVehicle struct {
 	Licenciado bool   `json:"Licenciado"`
 }
 
+// indicates that the function GetVehicleData takes a placa (a vehicle's license plate) as input, and it returns two things
 func GetVehicleData(placa string) (ApiVehicle, error) {
 	url := fmt.Sprint("https://my.api.mockaroo.com/veiculos?key=55ad1cd0&placa=%s", placa)
 
+	// This line sends an HTTP GET request to the constructed URL. The response is
+	// stored in resp, and any error that occurs during the request is stored in err
 	resp, err := http.Get(url)
+	// If an error occurs while making the GET request (e.g.,
+	// network issue, invalid URL), the function returns an empty ApiVehicle struct and the error
 	if err != nil {
 		return ApiVehicle{}, err
 	}
