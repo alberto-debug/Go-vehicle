@@ -14,7 +14,7 @@ func main() {
 	r.HandleFunc("/veiculos", handlers.CreateVehicle).Methods("POST")
 
 	log.Println("Server in running on http://8080")
-	if err := http.ListenAndServe(":8080"); err != nil {
+	if err := http.ListenAndServe(":8080", r); err != nil {
 		log.Fatal(err)
 	}
 }
