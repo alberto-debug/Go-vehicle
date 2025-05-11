@@ -29,5 +29,7 @@ func CreateVehicle(w http.ResponseWriter, r *http.Request) {
 
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusCreated)
+
+	// Converts the vehicle struct to JSON and writes it to the response body.
 	json.NewEncoder(w).Encode(vehicle)
 }
