@@ -11,7 +11,7 @@ import (
 
 var vehicleDB = []models.Vehicle{}
 
-func validateVehicle(cpf, placa string) error {
+func ValidateVehicle(cpf, placa string) error {
 	for _, v := range vehicleDB {
 		if v.CPF == cpf {
 			return errors.New("CPF already exists")
