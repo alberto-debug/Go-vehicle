@@ -25,4 +25,6 @@ func RegisterVehicle(input models.Vehicle) (models.Vehicle, error) {
 	input.Modelo = apiData.Modelo
 	input.Chassi = apiData.Chassi
 	input.Licenciado = apiData.Licenciado
+
+	return storage.SaveVehicle(input)
 }
