@@ -1,7 +1,25 @@
 package storage
 
-import "github.com/alberto-debug/Vehicle/internal/models"
+import (
+	"errors"
+
+	"github.com/alberto-debug/Vehicle/internal/models"
+)
 
 // Basic in memory storage
+// Create a variable named vehicleDB that is an empty list (slice) of Vehicle structs from the models package
 
 var vehicleDB = []models.Vehicle{}
+
+func validateVehicle(cpf, placa string) error {
+	for _, v := range vehicleDB {
+		if v.CPF == cpf {
+			return errors.New("CPF already exists")
+		}
+		if v.Placa == placa {
+			return errors.New("Placa already exists")
+		}
+	}
+
+	return nil
+}
