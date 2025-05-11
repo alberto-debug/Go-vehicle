@@ -35,6 +35,8 @@ func GetVehicleData(placa string) (ApiVehicle, error) {
 
 	// This variable will be used to store the vehicle data retrieved from the API response
 	var vehicle ApiVehicle
+
+	// The code decodes JSON data from the API response into the vehicle struct and returns it, or an error if decoding fails.
 	if err := json.NewDecoder(resp.Body).Decode(&vehicle); err != nil {
 		return ApiVehicle{}, err
 	}
