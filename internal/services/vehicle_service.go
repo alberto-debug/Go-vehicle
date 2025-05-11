@@ -9,5 +9,6 @@ import (
 
 func RegisterVehicle(input models.Vehicle) (models.Vehicle, error) {
 	if err := storage.ValidateVehicle(input.CPF, input.Placa); err != nil {
+		return models.Vehicle{}, err
 	}
 }
