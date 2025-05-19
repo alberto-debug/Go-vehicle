@@ -1,11 +1,12 @@
 package services
 
 import (
+	"fmt"
+
 	"github.com/alberto-debug/Vehicle/api"
 	"github.com/alberto-debug/Vehicle/internal/models"
 	"github.com/alberto-debug/Vehicle/internal/storage"
 )
-
 // This function orchestrates the vehicle registration process.
 
 func RegisterVehicle(input models.Vehicle) (models.Vehicle, error) {
@@ -13,13 +14,13 @@ func RegisterVehicle(input models.Vehicle) (models.Vehicle, error) {
 	if err := storage.ValidateVehicle(input.CPF, input.Placa); err != nil {
 		return models.Vehicle{}, err
 	}
+	fmt.Print("hhjhj")
 
 	// Call external API
 	apiData, err := api.GetVehicleData(input.Placa)
 	if err != nil {
 		return models.Vehicle{}, err
 	}
-
 	// merge the data
 	input.Marca = apiData.Marca
 	input.Modelo = apiData.Modelo
